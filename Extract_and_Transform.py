@@ -1,6 +1,9 @@
 import requests
 import json
 import time
+from tinydb import TinyDB, database, Query
+
+
 
 i = 1
 isEmpty = False
@@ -46,4 +49,9 @@ for i in range(sizeMinusOne): # função range itera apartir do 0 por isso usamo
     for j in range(sizeMinusOne-1): #essa deve ser menos dois para que no final não seja acessado um elemento fora do range da lista
 
         if listaFinal[j] > listaFinal[j + 1] : #verifica se cada posição é maior que a posição seguinte
-            listaFinal[j], listaFinal[j + 1] = listaFinal[j + 1], listaFinal[j] #caso seja, inverte a posição dos elementos
+            listaFinal[j], listaFinal[j + 1] = listaFinal[j + 1], listaFinal[j] #caso seja, inverte a posição dos elementosZ
+
+database = TinyDB(r'C:\Users\Public\database.json')
+database.insert({'Lista': listaFinal}) # salva lista ordenada em uma base local, para que possa ser acessada e retornada pela api
+
+            
