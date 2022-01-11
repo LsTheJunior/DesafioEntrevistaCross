@@ -17,7 +17,7 @@ class lista(BaseModel):
 
 @server.get('/ListaOrdenada')
 @spec.validate(resp=Response(HTTP_200=lista))  
-def buscar_pessoas():
+def retornar_lista():
     """Retorna a lista ordenada obtida na etapa 2 - Transform"""
     
     return jsonify(database.all())
