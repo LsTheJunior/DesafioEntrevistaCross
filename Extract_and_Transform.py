@@ -15,22 +15,12 @@ while isEmpty == False: #mantem o loop enquanto o array nao retornar vazio
   headers = {}
 
   response = requests.request("GET", url, headers=headers, data=payload)
+    if response.status_code == 500:
+          time.sleep(2.0)
+          response = requests.request("GET", url, headers=headers, data=payload)
   json_data = json.loads(response.text)
-  try:
-    listaTemporaria = json_data['numbers']
-  except:
-    '''
-    Em tempo de execução, devido a velocidade algumas requisições falham
-    caso falhe, o código espera dois segundos e tenta novamente
-    o problema nao ocorreu novamente após isso
-    '''
-    time.sleep(2.0)
-    url = f"http://challenge.dienekes.com.br/api/numbers?page={i}"
-    payload={}
-    headers = {}
-    response = requests.request("GET", url, headers=headers, data=payload)
-    json_data = json.loads(response.text)
-    listaTemporaria = json_data['numbers']
+  listaTemporaria = json_data['numbers']
+
 
   if not listaTemporaria: # verifica se o array esta vazio
     isEmpty = True
