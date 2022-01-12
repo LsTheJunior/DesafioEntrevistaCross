@@ -17,10 +17,13 @@ class lista(BaseModel):
 
 @server.get('/ListaOrdenada')
 @spec.validate(resp=Response(HTTP_200=lista))  
-def retornar_lista():
+def retornar_pessoas():
     """Retorna a lista ordenada obtida na etapa 2 - Transform"""
-    
-    return jsonify(database.all())
+    resultado =  database.all()
+    lista = []
+    lista.extend([r['Lista']for r in database])
+    return jsonify({"Lista":lista})
+
 
 
 
