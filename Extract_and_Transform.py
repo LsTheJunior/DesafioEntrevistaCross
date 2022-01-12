@@ -15,13 +15,11 @@ while isEmpty == False: #mantem o loop enquanto o array nao retornar vazio
   headers = {}
 
   response = requests.request("GET", url, headers=headers, data=payload)
-    if response.status_code == 500:
-          time.sleep(2.0)
-          response = requests.request("GET", url, headers=headers, data=payload)
+  if response.status_code == 500:
+     time.sleep(2.0)
+     response = requests.request("GET", url, headers=headers, data=payload)
   json_data = json.loads(response.text)
   listaTemporaria = json_data['numbers']
-
-
   if not listaTemporaria: # verifica se o array esta vazio
     isEmpty = True
   else:
