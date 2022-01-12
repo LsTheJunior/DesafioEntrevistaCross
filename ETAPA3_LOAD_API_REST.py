@@ -19,7 +19,6 @@ class lista(BaseModel):
 @spec.validate(resp=Response(HTTP_200=lista))  
 def retornar_pessoas():
     """Retorna a lista ordenada obtida na etapa 2 - Transform"""
-    resultado =  database.all()
     lista = []
     lista.extend([r['Lista']for r in database])
     return jsonify({"Lista":lista})
