@@ -46,8 +46,7 @@ size = len(listaFinal) # persiste o tamanho da lista
 sizeMinusOne = size-1 # persiste o tamanho da lista menos um
 for i in range(sizeMinusOne): # função range itera apartir do 0 por isso usamos sizeMinusOne
 
-    for j in range(sizeMinusOne-1): #essa deve ser menos dois para que no final não seja acessado um elemento fora do range da lista
-
+    for j in range(sizeMinusOne-i): 
         if listaFinal[j] > listaFinal[j + 1] : #verifica se cada posição é maior que a posição seguinte
             listaFinal[j], listaFinal[j + 1] = listaFinal[j + 1], listaFinal[j] #caso seja, inverte a posição dos elementosZ
 
